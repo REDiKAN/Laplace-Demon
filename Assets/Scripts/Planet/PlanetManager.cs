@@ -4,31 +4,24 @@ using UnityEngine;
 
 public class PlanetManager : MonoBehaviour
 {
-    public Transform star; // Префаб звезды (например, Солнце)
-    public float orbitRadius = 10f; // Радиус орбиты
-    public float orbitSpeed = 1f; // Скорость вращения по орбите
+    const float gravituConst = 0.67f;
+    [SerializeField] public GameObject[] affectors;
+    Rigidbody2D body;
+    float dist;
+    uint i;
 
-    private Vector2 center; // Центр орбиты (позиция звезды)
-    private float angle; // Угол поворота планеты относительно центра
-
-    void Start()
+    private void Start()
     {
-        center = star.position; // Устанавливаем центр орбиты как позицию звезды
-        angle = 0f; // Начальный угол
+        body = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    private void Update()
     {
-        center = star.position; // Устанавливаем центр орбиты как позицию звезды
-        angle = 0f; // Начальный угол
-
-        angle += Time.deltaTime * orbitSpeed; // Обновляем угол каждый кадр
-
-        // Вычисление новой позиции планеты с учетом угла и радиуса орбиты
-        var offset = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)) * orbitRadius;
-        transform.position = center + offset;
-
-        // Поворачиваем планету к звезде
-        transform.LookAt(star);
+        for (int i = 0; i < affectors.Length; i++)
+        {
+            dist = Vector2.Distance(transform.position, affectors[i].transform.position);
+            body.AddForce(((affectors[i].transform.position - transform.position) / dist) * 
+                (body.mass * affectors[i].GetComponent<Rigidbody2D>().mass * gravituConst) / (dist * dist + 1));
+        }
     }
 }

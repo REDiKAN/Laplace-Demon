@@ -131,6 +131,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 142607003}
+  - component: {fileID: 142607005}
+  - component: {fileID: 142607004}
   m_Layer: 0
   m_Name: Planets
   m_TagString: Untagged
@@ -154,6 +156,47 @@ Transform:
   - {fileID: 463068069}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &142607004
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142607002}
+  m_BodyType: 0
+  m_Simulated: 0
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 500
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &142607005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142607002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef90676ebfc302e47a2b8bd26b963d65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  affectors:
+  - {fileID: 1943664611}
 --- !u!1 &463068067
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,6 +539,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1943664613}
   - component: {fileID: 1943664612}
+  - component: {fileID: 1943664614}
   m_Layer: 0
   m_Name: Planets (1)
   m_TagString: Untagged
@@ -515,9 +559,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef90676ebfc302e47a2b8bd26b963d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  star: {fileID: 1943664613}
-  orbitRadius: 1
-  orbitSpeed: 1
+  affectors:
+  - {fileID: 142607002}
 --- !u!4 &1943664613
 Transform:
   m_ObjectHideFlags: 0
@@ -527,13 +570,40 @@ Transform:
   m_GameObject: {fileID: 1943664611}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.64, y: 3.74, z: 0}
+  m_LocalPosition: {x: 7.67, y: 3.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1046455585}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &1943664614
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943664611}
+  m_BodyType: 0
+  m_Simulated: 0
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 120
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
